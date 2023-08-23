@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <style>
+      img {
+        width: 200px;
+        height: 200px;
+        background-color: coral;
+      }
+      footer img {
+        width: 64px;
+        height: 64px;
+      }
+    </style>
+  </head>
+  <body id="box1"></body>
+</html>
+<script>
+  /* verbendung mit HTML */
+
+  const e = document.getElementById("box1");
+
+  /* Erstellt einen eigenständigen HTML-Element wie zb hr, br, img */
+
+  function singleElement(tag) {
+    return `<${tag}>`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb zb hr, br, img mit zwei Attributen */
+
+  function singleElementEx(tag, attr) {
+    return `<${tag} ${attr[0].name} = "${attr[0].wert}" ${attr[1].name} = "${attr[1].wert}" />`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb div oder p */
+
+  function blockElement(tag, wert) {
+    return `<${tag}>${wert}</${tag}>`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb div oder p mit einem Attribut */
+
+  function blockElementEx(tag, wert, attr) {
+    return `<${tag} ${attr[0]} = "${attr[1]}">${wert}</${tag}>`;
+  }
+
+  /* Erstellt ein HTML Block-Element wie zb div oder p mit zwei Attribut */
+
+  function blockElementEx2(tag, wert, attr) {
+    return `<${tag} ${attr[0].name} = "${attr[0].wert}" ${attr[1].name} = "${attr[1].wert}">${wert}</${tag}>`;
+  }
+  /* Erstellt ein HTML Block-Element wie zb div oder p mit zwei Attribut */
+  function blockElementExMitArrayJSON(tag, wert, attr) {
+    let s = "";
+    // *** //
+    for (let x = 0; x < wert.length; x++) {
+      s += `<${tag}>${wert[x].vorname} ${wert[x].nachname}</${tag}>`;
+    }
+    // *** //
+    return `<${tag} ${attr[0]} = "${attr[1]}">${s}</${tag}>`;
+  }
+  /* Erstellt ein HTML Block-Element wie zb div oder pmit zei wert */
+  function blockElementMit2Werte(tag, wert1, wert2) {
+    return `<${tag}>${wert1} ${wert2}</${tag}>`;
+  }
+
+  /* HTML-Inhalt einfugen*/
+  /* nav Erstellen  */
+
+  e.innerHTML += blockElementEx(
+    "nav",
+
+    blockElementEx(
+      "div",
+
+      singleElementEx("img", [
+        {
+          name: "src",
+          wert:
+            "https://www.hanisauland.de/sites/default/files/styles/article_1180/public/1369744-160320-147854.jpg.jpeg"
+        },
+        {
+          name: "alt",
+          wert: "text"
+        }
+      ]) +
+        blockElement(
+          "p",
+          "Ägypten pur - Reisen in die spannendsten Länder der Erde"
+        ),
+      ["style", " display: flex;"]
+    ) +
+      blockElementEx(
+        "div",
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert:
+              "https://cdn0.scrvt.com/1d269d6df8ffa5293567a253ea58b5c1/930f567dbd894d2f/374f46313ce2/Aegypten_Kairo_Stadtansicht_600x400.jpg"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]) +
+          blockElement(
+            "p",
+            " Wir nehmen euch jetzt mit zu den schönsten Städten am Nil oder am Meer in Ägypten"
+          ),
+        ["style", " display: flex;"]
+      ) +
+      blockElementEx(
+        "div",
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert:
+              "https://uploads.tapatalk-cdn.com/20160821/7cfffe6545f91f9607e0dce75c8b2483.jpg"
+          },
+          {
+            name: "alt",
+            wert: "text"
+          }
+        ]) +
+          blockElement(
+            "p",
+            "Sie Bewertungen und sehen Sie Fotos an. Buchen Sie eine Tour in Ägypten!"
+          ),
+        ["style", " display: flex;"]
+      ),
+    [
+      "style",
+      "display: flex;justify-content: space-around; background-color: antiquewhite;list-style-type: none;"
+    ]
+  );
+  /*  header Erstellen  */
+  e.innerHTML += blockElementEx(
+    "header",
+    blockElementEx(
+      "div",
+      blockElementEx(
+        "ul",
+        blockElementEx(
+          "li",
+          singleElementEx("img", [
+            {
+              name: "src",
+              wert:
+                "https://th.bing.com/th/id/R.60bbe830026d5edc407bfb54351cdc42?rik=qW0WTVzY0mJgPQ&riu=http%3a%2f%2fwww.reisetiger.net%2fwp-content%2fuploads%2f2014%2f09%2fTUI_com_Aegypten_Hurghada_Steigenberger_Poolanlage.png&ehk=QlFzaVDvXe32IGPQ4Ee5yEkJfkYINnfAtuzVHat56Us%3d&risl=&pid=ImgRaw&r=0"
+            },
+            {
+              name: "alt",
+              wert: "text"
+            }
+          ]) + blockElementEx("a", "· Hurghada", ["href", "#ziel"]),
+          []
+        ) +
+          blockElementEx(
+            "li",
+            singleElementEx("img", [
+              {
+                name: "src",
+                wert:
+                  "https://www.urlauberinfos.com/urlaub-aegypten/reisen-luxor/tempel.jpg"
+              },
+              {
+                name: "alt",
+                wert: "text"
+              }
+            ]) + blockElementEx("a", "luxor", ["href", "#ziel"]),
+            []
+          ) +
+          blockElementEx(
+            "li",
+            singleElementEx("img", [
+              {
+                name: "src",
+                wert:
+                  "https://i.content4travel.com/cms/img/u/kraj/1/sharm_el_sheikh_1.jpg?version=38"
+              },
+              {
+                name: "alt",
+                wert: "text"
+              }
+            ]) + blockElementEx("a", "Sharm el Sheikh", ["href", "#ziel"]),
+            []
+          ),
+        [
+          "style",
+          "display: flex;justify-content:space-between;background-color: coral;list-style-type: none;"
+        ]
+      ),
+      ["style", " background-color: coral; font-size:20px;"]
+    ),
+    []
+  );
+  e.innerHTML += blockElementEx(
+    "div",
+
+    singleElementEx("input", [
+      {
+        name: "id",
+        wert: "serch"
+      },
+      {
+        name: "type",
+        wert: "text"
+      }
+    ]) + blockElementEx("button", "Hinzufügen", ["onClick", "hinzu()"]),
+    ["style", " background-color: aqua; height:50px; font-size:20px;"]
+  );
+  /*  main Erstellen  */
+  e.innerHTML += blockElementEx(
+    "main",
+    singleElementEx("img", [
+      {
+        name: "src",
+        wert:
+          "https://www.alamy.de/aggregator-api/download?url=https://c8.alamy.com/compde/c49y89/agypten-kairo-stadt-von-nil-mit-opernhaus-im-vordergrund-in-der-abenddammerung-c49y89.jpg"
+      },
+      {
+        name: "alt",
+        wert: "text"
+      }
+    ]) +
+      blockElementEx(
+        "dl",
+        blockElementEx("dt", "  IhnnerFiliale", ["style", "padding: 10px;"]) +
+          blockElementEx("dd", "koln<br>", ["style", "padding: 5px;"]) +
+          blockElementEx("dd", "Berlin", ["style", "padding: 5px;"]) +
+          blockElementEx("dt", "AußerFiliale", ["style", "padding: 10px;"]) +
+          blockElementEx("dd", "kairo<br>", ["style", "padding: 5px;"]) +
+          blockElementEx("dd", "Istanbul", ["style", "padding: 5px;"]),
+        ["style", "padding:20px; background-color: rgb(218, 124, 178);"]
+      ) +
+      blockElementEx(
+        "table",
+        blockElement(
+          "tr",
+          blockElement("th", "Hotel") +
+            blockElement("th", "Tag") +
+            blockElement("th", "Preis")
+        ) +
+          blockElement(
+            "tr",
+            blockElement("td", "Grand-hotel") +
+              blockElement("td", "1") +
+              blockElement("td", "150€")
+          ) +
+          blockElement(
+            "tr",
+            blockElement("td", "helton") +
+              blockElement("td", "1") +
+              blockElement("td", "140€")
+          ),
+
+        [
+          "style",
+          "height:250px;background-color: rgba(29, 88, 164, 0.196);padding:10px;"
+        ]
+      ) +
+      singleElementEx("img", [
+        {
+          name: "src",
+          wert:
+            "https://th.bing.com/th/id/OIP.B9KV0HpUp7YPeyM6_zv76QHaE1?pid=ImgDet&rs=1"
+        },
+        {
+          name: "alt",
+          wert: "text"
+        }
+      ]),
+    [
+      "style",
+
+      "background-color: rgb(226, 178, 206);; font-size:20px;padding:10px;"
+    ]
+  );
+
+  /*footer erstellen*/
+
+  e.innerHTML += blockElementEx(
+    "footer",
+    blockElementEx(
+      "div",
+      singleElementEx("img", [
+        {
+          name: "src",
+          wert: "f.png "
+        },
+
+        { name: "alt", wert: "text" }
+      ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "t.png "
+          },
+
+          { name: "alt", wert: "text" }
+        ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "i.png"
+          },
+
+          { name: "alt", wert: "text" }
+        ]) +
+        singleElementEx("img", [
+          {
+            name: "src",
+            wert: "y.png "
+          },
+
+          { name: "alt", wert: "text" }
+        ]),
+      ["style", "display: flex;justify-content:space-between; width: 20px;"]
+    ) +
+      blockElementEx(
+        "div",
+        blockElement("h4", "Urlaubsziele") +
+          blockElement(
+            "p",
+            "Auf unserer Liste der beliebtesten Urlaubsziele darf Ägypten natürlich nicht fehlen. In Hurghada oder Sharm el Sheikh gibt es tolle Hotelresorts mit All Inclusive. Die umwerfende Unterwasserwelt könnt Ihr beim Tauchen und Schnorcheln entdecken."
+          ) +
+          singleElement("hr") +
+          blockElement(
+            "p",
+            "Auf unserer Liste der beliebtesten Urlaubsziele darf Ägypten natürlich nicht fehlen. In Hurghada oder Sharm el Sheikh gibt es tolle Hotelresorts mit All Inclusive. Die umwerfende Unterwasserwelt könnt Ihr beim Tauchen und Schnorcheln entdecken."
+          ),
+        []
+      ) +
+      blockElementEx(
+        "div",
+        singleElement("hr") +
+          blockElementEx(
+            "ul",
+
+            blockElementEx("li", "überuns ", ["style", "padding: 10px;"]) +
+              blockElementEx("li", "kontakz", ["style", "padding: 10px;"]) +
+              blockElementEx("li", "adresse", ["style", "padding: 10px;"]) +
+              blockElementEx("li", "webseite", ["style", "padding: 10px;"]),
+            [
+              "style",
+              "display: flex;justify-content:space-between;list-style-type: none;"
+            ]
+          ),
+        []
+      ),
+
+    ["style", "background-color: rgb(156, 181, 187);"]
+  );
+</script>
